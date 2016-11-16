@@ -4,7 +4,6 @@ import Color exposing (black)
 import Collage exposing (Form, collage, filled, group, move, moveX, moveY, square)
 import Element
 import Html exposing (Html)
-import Html.App as App
 
 type Orientation = North | South | East | West
 
@@ -23,8 +22,8 @@ blockSize = 20
 
 drawShape : List (List Bool) -> Form
 drawShape rows =
-  let yOffsets = List.map (\x -> x * -blockSize) [0..2]
-      xOffsets = List.map (\x -> x * blockSize) [0..2]
+  let yOffsets = List.map (\x -> toFloat x * -blockSize) <| List.range 0 2
+      xOffsets = List.map (\x -> toFloat x * blockSize) <| List.range 0 2
       drawRow row = List.concat <| List.map2 (\offset value -> if value then [moveX offset <| filled black <| square blockSize] else []) xOffsets row
   in group <| List.concat <| List.map2 (\row offset -> List.map (moveY <| offset) <| drawRow row) rows yOffsets
 

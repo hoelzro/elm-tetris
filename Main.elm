@@ -1,4 +1,3 @@
-import Html.App as App
 import Html exposing (Html, text)
 
 import Color exposing (black)
@@ -255,8 +254,8 @@ view model =
         renderScore state.currentScore
       ]
 
-main : Program Never
-main = App.program {
+main : Program Never Model Msg
+main = Html.program {
     init = init,
     update = update,
     subscriptions = subscriptions,
