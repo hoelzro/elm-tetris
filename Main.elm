@@ -23,7 +23,7 @@ fromJust maybe =
     Nothing -> Debug.crash "fromJust given Nothing"
 
 pieceGenerator : Random.Generator Piece
-pieceGenerator = Random.map (((flip Piece) North) << fromJust) <| Random.Extra.sample [JShape]
+pieceGenerator = Random.map (((flip Piece) North) << fromJust) <| Random.Extra.sample [IShape, JShape, LShape, OShape, SShape, TShape, ZShape]
 
 -- XXX current speed
 type alias State = {
